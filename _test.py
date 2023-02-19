@@ -1,24 +1,23 @@
 
-result = [*range(3, 7)]
-#order = [4, 3, 1, 2]
+grid = [
+    ["1","1","0","0","0"],
+    ["1","1","0","0","0"],
+    ["0","0","1","0","0"],
+    ["0","0","0","1","1"]
+]
 
-#result = sorted(test, key= lambda x: order[test.index(x)])
-print(result)
+visited = [[0 for entry in row] for row in grid]
 
-"""
-def create(m, n):
-    return [[0 for i in range(n)] for j in range(m)]
+def getNeighbors(row, col):
+    neighborList = []
+    if row > 0 and grid[row-1][col] == "1": 
+        neighborList.append([row-1, col])
+    if row < len(grid) - 1 and grid[row+1][col] == "1": 
+        neighborList.append([row+1, col])
+    if col > 0 and grid[row][col-1] == "1": 
+        neighborList.append([row, col-1])
+    if col < len(grid[row]) - 1 and grid[row][col+1] == "1": 
+        neighborList.append([row, col+1])
+    return neighborList
 
-a = [[0, 0], [0, 0], [0, 0]]
-m = len(a)
-n = len(a[0])
-
-print(m)
-print(n)
-print()
-
-res = create(m, n)
-res[0][1] = 5
-
-print(res)
-"""
+print(getNeighbors(3, 3))
